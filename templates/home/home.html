@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}{% endblock title %}
+{%block body%}
+<div class="container">
+    <div class="jumbotron my-3">
+      <h1 class="display-4">Welcome to iCoderBlog!</h1>
+      <p class="lead"></p>
+        <hr class="my-4">
+      <p>
+         your go-to destination for everything related to coding, programming, and tech! Whether you're a beginner taking your first steps into the world of coding or an experienced developer looking to stay updated with the latest trends, iCoder is here to guide you through every step of your coding journey..</p>
+      <a class="btn btn-success btn-lg" href="/blog" role="button">Go to Blog</a>
+      </div>
+    </div>
+      <div class="container">
+        <h2>Popular Blogposts</h2>
+        {%for post in top_posts %}
+        <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 my-4 position-relative">
+                <div class="col p-4 d-flex flex-column position-static">
+                  
+                  <h3 class="mb-0">{{post.title}}</h3>
+                  <div class="mb-1 text-muted">{{post.timeStamp}} by <b>{{post.author}}</b></div>
+                  <p class="card-text mb-auto">{{post.content|slice:":100"}}</p>
+                  <a href="/blog/{{post.slug}}" class="text-success">Continue reading</a>
+                </div>
+           
+           </div>  
+           {% endfor %} 
+              </div>
+              </div>
+  
+{%endblock body%}

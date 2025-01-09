@@ -1,0 +1,81 @@
+
+{% extends "base.html" %}
+{% block title %} About{% endblock title %}
+ 
+{%block css%}
+/* Styling for the container to use flexbox */
+.container {
+    display: flex;        /* Enables flexbox layout */
+    justify-content: space-between; /* Ensures space between the items */
+    align-items: center;  /* Vertically aligns the items to the center */
+}
+
+/* Styling for the left side */
+.left {
+    flex: 1;               /* Takes up available space */
+    padding-right: 20px;    /* Adds some space between the image and the right section */
+}
+
+/* Styling for the right side */
+.right {
+    flex: 1;               /* Takes up available space */
+    padding-left: 20px;     /* Adds some space between the text and the left section */
+}
+
+.left img {
+    max-width: 100%;       /* Ensures the image is responsive and doesn't overflow */
+    height: auto;          /* Maintains aspect ratio of the image */
+}
+
+span#animation{
+    color:green;
+}
+ 
+    
+
+{% endblock css %}
+{%block body%}
+{% load static %}
+    <h1 class="text-center" >About iCoder Blog</h1>
+    <div class="container">
+        <div class="left">
+            <img src="{% static 'img/about.jpg'%}">
+        </div>
+        <div class="right">
+            
+            <h3>Your Coding Adventure Starts Here – <h3>Learn, Build, Grow <span id="animation"></span></h3>
+            <p>Welcome to iCoder, your ultimate destination for everything related to coding, technology, and digital innovation! Whether you're a beginner looking to learn the basics, a seasoned developer exploring new tools, or someone passionate about staying up-to-date with the tech world, iCoder is here to guide you through it all.</p>
+            <p>We believe that coding is more than just writing lines of code—it’s about solving problems, thinking creatively, and building the future. Whether you're working on your first project or preparing for a career in tech, iCoder is your companion on this exciting journey.</p>
+        <strong>Thank you for visiting! We're excited to be part of your coding adventure.</strong>
+        </div>
+    </div>
+
+{%endblock body%}
+    {%block js%}
+    const languages = ["HTML", "CSS", "JAVASCRIPT", "PHP", "PYTHON", "DJANGO"];
+    let index = 0;
+
+    function showNextLanguage() {
+        const languageElement = document.getElementById("animation");
+        languageElement.textContent = languages[index];
+
+        index++;
+
+        // Reset index if we reach the end of the languages array
+        if (index === languages.length) {
+            index = 0;
+        }
+    }
+
+    // Show languages one by one with a 2-second interval
+    setInterval(showNextLanguage, 2000);
+
+    // Initialize by displaying the first language immediately
+    showNextLanguage();
+
+    
+    {%endblock js%}
+
+
+
+  

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %} Contact{% endblock title %}
+{%block css%}
+/* Focus effect */
+.form-control:focus {
+    border-color: #66afe9; /* Blue border color when focused */
+    box-shadow: 0 0 8px green; /* Light blue shadow around the input */
+    outline: none; /* Removes the default outline */
+}
+
+{%endblock css%}
+
+{% block body %}
+<div class="container my-3">
+<h3>Contact iCoder Admin</h3>
+
+<form  method="POST" action="{% url 'contact' %}">
+  {% csrf_token %}
+  <div class="mb-3">
+    <label for="username" class="form-label">Name</label>
+    <input type="text" class="form-control" id="username" name="username" aria-describedby="username" placeholder="Enter your name here">
+    
+  </div>
+
+  <div class="mb-3">
+    <label for="email" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="email"  name="email" aria-describedby="emailHelp" placeholder="abc@gmail.com">
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+  <div class="mb-3">
+    <label for="phone" class="form-label">Phone Number</label>
+    <input type="phone" class="form-control" name="phone" id="phone" placeholder="enter a mobile number">
+    
+  </div>
+  <div class="mb-3">
+    <label for="content" class="form-label">Decribe your issue</label>
+    <textarea type="content" class="form-control" name="content" id="content" ></textarea placeholder="write your ideas here">
+    
+    
+  </div>
+  
+  <button type="submit" class="btn btn-success">Submit</button>
+</form>
+
+</div>
+ {% endblock %} 
